@@ -59,5 +59,35 @@ public class Breakout extends GraphicsProgram {
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
+		buildPaddle();
+		buildBricks();
+		for(int i = NTURNS;i>0;i--){
+			bounceBall();
+			if (checkBrick() == 0){
+				break;
+			}
+		break;
+		}		
 	}
+	public void buildPaddle(){
+		int x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
+		int y = APPLICATION_WIDTH - PADDLE_Y_OFFSET;
+		GRect paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
+	}
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
