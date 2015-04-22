@@ -70,20 +70,17 @@ public class Breakout extends GraphicsProgram {
 		}		
 	}
 	/* make a paddle which can be controlled by the mouse*/
-	public void makePaddle(){
-		int x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
-		int y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
-		GRect paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
-		add(paddle);
+	public class makePaddle extends GraphicsProgram{
+		public void init(){
+			addMouseListeners();
+		}
+		public void mouseMoved(MouseEvent e){
+			int y = APPLICATION_WIDTH - PADDLE_Y_OFFSET;
+			GRect paddle = new GRect(e.getX(),y,PADDLE_WIDTH,PADDLE_HEIGHT);
+			add(paddle);
+		}
 	}
-	public void init(){
-		addMouseListeners();
-	}
-	public void mouseMoved(MouseEvent e){
-		int y = APPLICATION_WIDTH - PADDLE_Y_OFFSET;
-		GRect paddle = new GRect(e.getX(),y,PADDLE_WIDTH,PADDLE_HEIGHT);
-		add(paddle);
-	}
+	
 	
 	/* make a bouncingBall*/
 	public void bounceBall(){
@@ -96,20 +93,33 @@ public class Breakout extends GraphicsProgram {
 	 */
 	public GOval makeBall(){
 		int x = (APPLICATION_WIDTH - BALL_RADIUS )/2; 
-		int y = APPLICATION_WIDTH - BALL_RADIUS;
+		int y = (APPLICATION_HEIGHT - BALL_RADIUS)/2;
 		GOval ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
 		return ball;
 	}
 	
-	/*
-	 * 
-	 */
+	/*set vx,vy to make ball move*/
 	private void moveBall(GOval ball){
 		double vy = 3.0;
 		RandomGenerator rgen = RandomGenerator.getInstance();
 		double vx = rgen.nextDouble(1.0, 3.0);
-		if (rgen.nextBoolean(0.5)) vx = -vx;
-		
+		if (rgen.nextBoolean(0.5)){
+			vx = -vx;
+		}	
+		while (true){
+			if (ball.getX() == 0.0){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == 0.0){
+				ball.move(vx, -vy);
+			}
+			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
+				ball.move(vx, -vy);
+			}
+		}
 		
 	}
 	
