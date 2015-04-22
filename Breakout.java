@@ -88,17 +88,30 @@ public class Breakout extends GraphicsProgram {
 	/* make a bouncingBall*/
 	public void bounceBall(){
 		makeBall();
+		moveBall();
 		
 		
 	}
-	
-	public makeBall(){
+	/* @return A ball that can be bounced.
+	 */
+	public GOval makeBall(){
 		int x = (APPLICATION_WIDTH - BALL_RADIUS )/2; 
 		int y = APPLICATION_WIDTH - BALL_RADIUS;
-		GRect paddle = new GRect(x,y,BALL_RADIUS,BALL_RADIUS);
-		add(paddle);
+		GOval ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
+		return ball;
 	}
 	
+	/*
+	 * 
+	 */
+	private void moveBall(GOval ball){
+		double vy = 3.0;
+		RandomGenerator rgen = RandomGenerator.getInstance();
+		double vx = rgen.nextDouble(1.0, 3.0);
+		if (rgen.nextBoolean(0.5)) vx = -vx;
+		
+		
+	}
 	
 
 
