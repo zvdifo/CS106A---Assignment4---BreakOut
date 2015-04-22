@@ -59,8 +59,8 @@ public class Breakout extends GraphicsProgram {
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
-		buildPaddle();
-		buildBricks();
+		makePaddle();
+		makeBricks();
 		for(int i = NTURNS;i>0;i--){
 			bounceBall();
 			if (checkBrick() == 0){
@@ -69,9 +69,10 @@ public class Breakout extends GraphicsProgram {
 		break;
 		}		
 	}
-	public void buildPaddle(){
+	/* make a paddle which can be controlled by the mouse*/
+	public void makePaddle(){
 		int x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
-		int y = APPLICATION_WIDTH - PADDLE_Y_OFFSET;
+		int y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
 		GRect paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
 		add(paddle);
 	}
@@ -83,9 +84,22 @@ public class Breakout extends GraphicsProgram {
 		GRect paddle = new GRect(e.getX(),y,PADDLE_WIDTH,PADDLE_HEIGHT);
 		add(paddle);
 	}
-
-
-
+	
+	/* make a bouncingBall*/
+	public void bounceBall(){
+		makeBall();
+		
+		
+	}
+	
+	public makeBall(){
+		int x = (APPLICATION_WIDTH - BALL_RADIUS )/2; 
+		int y = APPLICATION_WIDTH - BALL_RADIUS;
+		GRect paddle = new GRect(x,y,BALL_RADIUS,BALL_RADIUS);
+		add(paddle);
+	}
+	
+	
 
 
 }
