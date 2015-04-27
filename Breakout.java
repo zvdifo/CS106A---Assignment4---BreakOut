@@ -84,12 +84,12 @@ public class Breakout extends GraphicsProgram {
 		last = new GPoint(e.getPoint());
 	    gobj = getElementAt(last);
 	    gobj.move(e.getX() - last.getX(), e.getY() - last.getY());
-	    last = new GPoint(e.getPoint());
+	    
 	}
 	
-	  private GObject gobj;
-	  private GPoint last;
-	  ;
+private GObject gobj;
+private GPoint last;
+	  
 	
 
 	
