@@ -71,8 +71,8 @@ public class Breakout extends GraphicsProgram {
 	
 	/* make a paddle which can be controlled by the mouse*/
 	public GRect makePaddle(){
-		int x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
-		int y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
+		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
+		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
 		GRect paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
 		return paddle;
 	}
@@ -84,8 +84,7 @@ public class Breakout extends GraphicsProgram {
 		last = new GPoint(e.getPoint());
 		GRect nextPaddle = new GRect(last.getX(),last.getY(),PADDLE_WIDTH,PADDLE_HEIGHT);
 	    remove(paddle);
-	    add(nextPaddle);  
-	    
+	    add(nextPaddle);      
 	}
 	
 private GObject gobj;
