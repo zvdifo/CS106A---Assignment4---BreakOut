@@ -59,39 +59,46 @@ public class Breakout extends GraphicsProgram {
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
-		makePaddle();
-		makeBricks();
-		makeBall();
+		GRect paddle = makePaddle();
+		GObject bricks = makeBricks();
+		GOval ball = makeBall();
+		add(paddle);
+		add(bricks);
 		add(ball);
-		
+		bounceBall(ball);
+		}		
+	}
+
+	/* make a bouncingBall*/
+	private void bounceBall(GOval ball){
 		for(int i = NTURNS;i>0;i--){
-			bounceBall();
+			moveBall(ball);
 			if (checkBrick() == 0){
 				break;
 			}
 		break;
-		}		
 	}
+		
 	/* make a paddle which can be controlled by the mouse*/
-	public class makePaddle extends GraphicsProgram{
-		public void init(){
-			addMouseListeners();
-		}
-		public void mouseMoved(MouseEvent e){
-			int y = APPLICATION_WIDTH - PADDLE_Y_OFFSET;
-			GRect paddle = new GRect(e.getX(),y,PADDLE_WIDTH,PADDLE_HEIGHT);
-			add(paddle);
-		}
+	public GRect makePaddle(){
+		int x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
+		int y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
+		GRect paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
+		return paddle;
+	}
+		
+	public void init(){
+		addMouseListeners();
+	}
+	public void mouseMoved(MouseEvent e){
+		int y = APPLICATION_WIDTH - PADDLE_Y_OFFSET;
+		GRect paddle = new GRect(e.getX(),y,PADDLE_WIDTH,PADDLE_HEIGHT);
+		add(paddle);
 	}
 	
 	
-	/* make a bouncingBall*/
-	public void bounceBall(){
-		makeBall();
-		moveBall();
-		
-		
-	}
+	
+
 	/* @return A ball that can be bounced.
 	 */
 	public GOval makeBall(){
@@ -102,13 +109,14 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/*set vx,vy to make ball move*/
-	private void moveBall(GOval ball){
+	private void moveBall(GOval ball,GRect paddle){
 		double vy = 3.0;
 		RandomGenerator rgen = RandomGenerator.getInstance();
 		double vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
+		GObject collider = getCollidingObject(ball);
 		while (true){
 			if (ball.getX() == 0.0){
 				ball.move(-vx, vy);
@@ -122,32 +130,38 @@ public class Breakout extends GraphicsProgram {
 			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
 				ball.move(vx, -vy);
 			}
+			if (collider == paddle){
+				ball.move(vx, -vy);
+			}
+			if 
+			
 		}
 		
 	}
-	
+	/*
+	 * check if there is a collision.
+	 */
 	private GObject getCollidingObject(GOval ball){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
-			GObject collider = getElementAt(ball.getX(),ball.getY());	
+			/**strange*/
+			GObject collider = getElementAt(ball.getX(),ball.getY());		
 		}
-		if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
 			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
 		}
-		if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
+		else if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
 			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS);	
 		}
-		if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
 			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS);	
+		}
+		/**strange*/
+		else{
+			return null;
 		}
 	}
 	
-	private void meetPaddle(GOval ball){
-		GObject collider = getCollidingObject(GOval ball);
-		if ((collider == paddle)){
-			moveBall(GOval ball);
-			ball.move(vx, -vy);	
-		}
-	}
+	
 
 
 }
