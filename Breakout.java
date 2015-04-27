@@ -81,13 +81,10 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 	}
 	public void mouseMoved(MouseEvent e,GRect paddle){
-		
 		last = new GPoint(e.getPoint());
 		GRect nextPaddle = new GRect(last.getX(),last.getY(),PADDLE_WIDTH,PADDLE_HEIGHT);
 	    remove(paddle);
-	    add(nextPaddle);
-	    
-	    
+	    add(nextPaddle);  
 	    
 	}
 	
