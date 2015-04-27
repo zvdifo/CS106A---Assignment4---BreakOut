@@ -66,6 +66,7 @@ public class Breakout extends GraphicsProgram {
 		/*add(bricks);*/
 		add(ball);
 		moveBall(ball,paddle);
+		addMouseListeners();
 	}		
 	
 	
@@ -77,9 +78,7 @@ public class Breakout extends GraphicsProgram {
 		return paddle;
 	}
 		
-	public void init(){
-		addMouseListeners();
-	}
+		
 	public void mouseMoved(MouseEvent e,GRect paddle){
 		last = new GPoint(e.getPoint());
 		GRect nextPaddle = new GRect(last.getX(),last.getY(),PADDLE_WIDTH,PADDLE_HEIGHT);
@@ -87,7 +86,6 @@ public class Breakout extends GraphicsProgram {
 	    add(nextPaddle);      
 	}
 	
-private GObject gobj;
 private GPoint last;
 	  
 	
