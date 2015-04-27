@@ -61,6 +61,9 @@ public class Breakout extends GraphicsProgram {
 		/* You fill this in, along with any subsidiary methods */
 		makePaddle();
 		makeBricks();
+		makeBall();
+		add(ball);
+		
 		for(int i = NTURNS;i>0;i--){
 			bounceBall();
 			if (checkBrick() == 0){
@@ -123,6 +126,28 @@ public class Breakout extends GraphicsProgram {
 		
 	}
 	
+	private GObject getCollidingObject(GOval ball){
+		if (getElementAt(ball.getX(),ball.getY())!= null){
+			GObject collider = getElementAt(ball.getX(),ball.getY());	
+		}
+		if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
+		}
+		if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS);	
+		}
+		if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS);	
+		}
+	}
+	
+	private void meetPaddle(GOval ball){
+		GObject collider = getCollidingObject(GOval ball);
+		if ((collider == paddle)){
+			moveBall(GOval ball);
+			ball.move(vx, -vy);	
+		}
+	}
 
 
 }
