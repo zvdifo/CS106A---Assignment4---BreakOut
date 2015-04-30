@@ -66,7 +66,7 @@ public class Breakout extends GraphicsProgram implements MouseMotionListener{
 		/*add(bricks);*/
 		add(ball);
 		moveBall(ball,paddle);
-		addMouseListener();
+		addMouseListeners();
 	}		
 	
 	
