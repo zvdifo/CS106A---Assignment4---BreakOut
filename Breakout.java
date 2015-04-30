@@ -15,7 +15,7 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Breakout extends GraphicsProgram implements MouseMotionListener{
+public class Breakout extends GraphicsProgram{
 
 	/** Width and height of application window in pixels */
 	public static final int APPLICATION_WIDTH = 400;
