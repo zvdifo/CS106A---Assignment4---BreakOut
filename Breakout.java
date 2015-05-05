@@ -96,8 +96,8 @@ public class Breakout extends GraphicsProgram{
 	/* @return A ball that can be bounced.
 	 */
 	public void makeBall(){
-		int x = (APPLICATION_WIDTH - BALL_RADIUS )/2; 
-		int y = (APPLICATION_HEIGHT - BALL_RADIUS)/2;
+		int x = APPLICATION_WIDTH / 2 - BALL_RADIUS ; 
+		int y = APPLICATION_HEIGHT /2- BALL_RADIUS;
 		ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
 	}
 	
@@ -118,18 +118,80 @@ public class Breakout extends GraphicsProgram{
 			if (ball.getY() == 0.0){
 				ball.move(vx, -vy);
 			}
+			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS*2){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS*2){
+				ball.move(vx, -vy);
+			}
+		}
+		
+		
+		
+		
+		GObject collider = getCollidingObject();
+		while (true){
+			if (ball.getX() == 0.0){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == 0.0){
+				ball.move(vx, -vy);
+			}
 			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS){
 				ball.move(-vx, vy);
 			}
 			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
 				ball.move(vx, -vy);
 			}
+			if (collider == paddle){
+				ball.move(vx, -vy);
+			}
+			 
+			
 		}
 		
 	}
+	/*
+	 * check if there is a collision.
+	 */
+	private GObject getCollidingObject(){
+		if (getElementAt(ball.getX(),ball.getY())!= null){
+			/**strange*/
+			GObject collider = getElementAt(ball.getX(),ball.getY());
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
+			return collider;
+		}
+		else if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS);
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS);	
+			return collider;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
+
+
 }
-		
-		
-		
+
+
+
+
+
+
+
+
+
 
 
