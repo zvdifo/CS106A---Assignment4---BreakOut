@@ -61,11 +61,11 @@ public class Breakout extends GraphicsProgram{
 		/* You fill this in, along with any subsidiary methods */
 		makePaddle();
 		/*GObject bricks = makeBricks();*/
-		//GOval ball = makeBall();
+		GOval ball = makeBall();
 		add(paddle);
 		/*add(bricks);*/
-		//add(ball);
-		//moveBall(ball);
+		add(ball);
+		moveBall(ball);
 		addMouseListeners();
 	}		
 	
@@ -75,10 +75,10 @@ public class Breakout extends GraphicsProgram{
 		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
 		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
 		paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
-	}
+	}	
 		
 	public void mouseMoved(MouseEvent e){
-		paddle.setLocation(e.getX() - 30, getHeight() - 40); 	    
+		paddle.setLocation(e.getX() - PADDLE_WIDTH/2, getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT); 	    
 	}
 	
 	private GRect paddle;
@@ -91,7 +91,7 @@ public class Breakout extends GraphicsProgram{
 
 	/* @return A ball that can be bounced.
 	 */
-	/*public GOval makeBall(){
+	public GOval makeBall(){
 		int x = (APPLICATION_WIDTH - BALL_RADIUS )/2; 
 		int y = (APPLICATION_HEIGHT - BALL_RADIUS)/2;
 		GOval ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
@@ -99,7 +99,7 @@ public class Breakout extends GraphicsProgram{
 	}
 	
 	/*set vx,vy to make ball move*/
-	/*private void moveBall(GOval ball){
+	private void moveBall(GOval ball){
 		double vy = 3.0;
 		RandomGenerator rgen = RandomGenerator.getInstance();
 		double vx = rgen.nextDouble(1.0, 3.0);
