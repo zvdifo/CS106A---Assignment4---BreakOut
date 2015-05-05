@@ -120,7 +120,7 @@ public class Breakout extends GraphicsProgram{
 			if (ball.getX() <= 0){
 				vx = -vx;
 			}
-			if (collider == paddle){
+			if (collider != null && collider == paddle){
 				vy = -vy;
 			}
 		}
@@ -130,7 +130,6 @@ public class Breakout extends GraphicsProgram{
 	
 	private GObject getCollidingObject(){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
-			/**strange*/
 			collider = getElementAt(ball.getX(),ball.getY());
 			return collider;
 		}
