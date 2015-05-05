@@ -74,8 +74,8 @@ public class Breakout extends GraphicsProgram{
 	public GRect makePaddle(){
 		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
 		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
-		GRect paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
-		return paddle;
+		paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
+		add(paddle);
 	}	
 		
 	public void mouseMoved(MouseEvent e){
