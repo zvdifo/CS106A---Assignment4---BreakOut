@@ -97,33 +97,6 @@ public class Breakout extends GraphicsProgram{
 	}
 	
 	/*set vx,vy to make ball move*/
-	private void moveBall(){
-		vy = 3.0;
-		RandomGenerator rgen = RandomGenerator.getInstance();
-		vx = rgen.nextDouble(1.0, 3.0);
-		if (rgen.nextBoolean(0.5)){
-			vx = -vx;
-		}	
-		while(true){
-			ball.move(vx, vy);
-			pause(PAUSE_TIME);
-			if (ball.getY() + ball.getHeight() >= getHeight()){
-				vy = -vy;
-			}
-			if (ball.getY() <= 0){
-				vy = -vy;
-			}
-			if (ball.getX() + ball.getWidth() >= getWidth()){
-				vx = -vx;
-			}
-			if (ball.getX() <= 0){
-				vx = -vx;
-			}
-		}
-	}
-	
-	
-	
 	
 }
 		
