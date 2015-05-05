@@ -120,9 +120,7 @@ public class Breakout extends GraphicsProgram{
 			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
 				ball.move(vx, -vy);
 			}
-			//if (collider == paddle){
-				//ball.move(vx, -vy);
-			//}
+			
 			 
 			
 		}
