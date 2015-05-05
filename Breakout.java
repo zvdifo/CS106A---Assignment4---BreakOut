@@ -82,6 +82,7 @@ public class Breakout extends GraphicsProgram{
 	
 	private GRect paddle;
 	private GOval ball;
+	private double vx,vy;
 	  
 	
 
@@ -99,9 +100,9 @@ public class Breakout extends GraphicsProgram{
 	
 	/*set vx,vy to make ball move*/
 	private void moveBall(){
-		double vy = 3.0;
+		vy = 3.0;
 		RandomGenerator rgen = RandomGenerator.getInstance();
-		double vx = rgen.nextDouble(1.0, 3.0);
+		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
