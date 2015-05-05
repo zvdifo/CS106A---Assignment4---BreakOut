@@ -56,6 +56,9 @@ public class Breakout extends GraphicsProgram{
 
 	/** Number of turns */
 	private static final int NTURNS = 3;
+	
+	/* The amount of time to pause between frames (48fps). */
+	private static final double PAUSE_TIME = 1000.0 / 48; 
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
@@ -108,11 +111,57 @@ public class Breakout extends GraphicsProgram{
 		}	
 		while(true){
 			ball.move(vx, vy);
+			pause(PAUSE_TIME);
+		}
+		GObject collider = getCollidingObject(ball);
+		while (true){
+			if (ball.getX() == 0.0){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == 0.0){
+				ball.move(vx, -vy);
+			}
+			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
+				ball.move(vx, -vy);
+			}
+			if (collider == paddle){
+				ball.move(vx, -vy);
+			}
+			 
 			
-			pause(1000.0 / 48);
 		}
 		
 	}
+	/*
+	 * check if there is a collision.
+	 */
+	private GObject getCollidingObject(GOval ball){
+		if (getElementAt(ball.getX(),ball.getY())!= null){
+			/**strange*/
+			GObject collider = getElementAt(ball.getX(),ball.getY());
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
+			return collider;
+		}
+		else if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS);
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS);	
+			return collider;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	
 	
 	
 	
