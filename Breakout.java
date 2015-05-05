@@ -87,7 +87,6 @@ public class Breakout extends GraphicsProgram{
 				add(brick);
 			}
 		}
-		
 		makePaddle();
 		makeBall();
 		add(paddle);
