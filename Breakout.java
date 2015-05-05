@@ -60,12 +60,10 @@ public class Breakout extends GraphicsProgram{
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
 		makePaddle();
-		/*GObject bricks = makeBricks();*/
 		makeBall();
 		add(paddle);
-		/*add(bricks);*/
+		//add(bricks);
 		add(ball);
-		moveBall();
 		addMouseListeners();
 	}		
 	
