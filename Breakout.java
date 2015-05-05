@@ -61,7 +61,7 @@ public class Breakout extends GraphicsProgram{
 		/* You fill this in, along with any subsidiary methods */
 		makePaddle();
 		/*GObject bricks = makeBricks();*/
-		GOval ball = makeBall();
+		makeBall();
 		add(paddle);
 		/*add(bricks);*/
 		add(ball);
@@ -82,6 +82,7 @@ public class Breakout extends GraphicsProgram{
 	}
 	
 	private GRect paddle;
+	private GOval ball;
 	  
 	
 
@@ -91,15 +92,14 @@ public class Breakout extends GraphicsProgram{
 
 	/* @return A ball that can be bounced.
 	 */
-	public GOval makeBall(){
+	public void makeBall(){
 		int x = (APPLICATION_WIDTH - BALL_RADIUS )/2; 
 		int y = (APPLICATION_HEIGHT - BALL_RADIUS)/2;
-		GOval ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
-		return ball;
+		ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
 	}
 	
 	/*set vx,vy to make ball move*/
-	private void moveBall(GOval ball){
+	private void moveBall(){
 		double vy = 3.0;
 		RandomGenerator rgen = RandomGenerator.getInstance();
 		double vx = rgen.nextDouble(1.0, 3.0);
