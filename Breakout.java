@@ -58,7 +58,7 @@ public class Breakout extends GraphicsProgram{
 	private static final int NTURNS = 3;
 	
 	/* The amount of time to pause between frames (48fps). */
-	private static final double PAUSE_TIME = 1000.0 / 500; 
+	private static final double PAUSE_TIME = 1000.0 / 48; 
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
@@ -128,26 +128,26 @@ public class Breakout extends GraphicsProgram{
 	
 	
 	
-	private void getCollidingObject(){
+	private GObject getCollidingObject(){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
 			/**strange*/
 			collider = getElementAt(ball.getX(),ball.getY());
-			
+			return collider;
 		}
 		else if (getElementAt(ball.getX()+ ball.getHeight(),ball.getY())!= null){
 			collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY());	
-			
+			return collider;
 		}
 		else if (getElementAt(ball.getX(),ball.getY()+ ball.getHeight())!= null){
 			collider = getElementAt(ball.getX(),ball.getY()+ ball.getHeight());
-			
+			return collider;
 		}
 		else if (getElementAt(ball.getX()+ ball.getHeight(),ball.getY()+ ball.getHeight())!= null){
 			collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY()+ ball.getHeight());	
-			
+			return collider;
 		}
 		else{
-			collider = null;
+			return null;
 		}
 	}
 }
