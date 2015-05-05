@@ -112,16 +112,22 @@ public class Breakout extends GraphicsProgram{
 		while(true){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
-			if (ball.getX() == 0.0){
-				ball.move(-vx, vy);
+			if (ballBelowFloor(ball)) {
+				vy *= -ELASTICITY;
+			}
+			
+			
+			
+			/*if (ball.getX() == 0.0){
+				vx = -vx;
 			}
 			if (ball.getY() == 0.0){
 				ball.move(vx, -vy);
 			}
-			if (ball.getX() == WIDTH-BALL_RADIUS*2){
+			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS*2){
 				ball.move(-vx, vy);
 			}
-			if (ball.getY() == HEIGHT-BALL_RADIUS*2){
+			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS*2){
 				ball.move(vx, -vy);
 			}
 		}
@@ -129,7 +135,52 @@ public class Breakout extends GraphicsProgram{
 		
 		
 		
+		/*GObject collider = getCollidingObject();
+		while (true){
+			if (ball.getX() == 0.0){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == 0.0){
+				ball.move(vx, -vy);
+			}
+			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
+				ball.move(vx, -vy);
+			}
+			if (collider == paddle){
+				ball.move(vx, -vy);
+			}
+			 
+			
+		}
 		
+	}
+	/*
+	 * check if there is a collision.
+	 */
+	/*private GObject getCollidingObject(){
+		if (getElementAt(ball.getX(),ball.getY())!= null){
+			/**strange*/
+			/*GObject collider = getElementAt(ball.getX(),ball.getY());
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
+			return collider;
+		}
+		else if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS);
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS);	
+			return collider;
+		}
+		else{
+			return null;
+		}
 	}
 	
 	
