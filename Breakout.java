@@ -133,16 +133,16 @@ public class Breakout extends GraphicsProgram{
 			collider = getElementAt(ball.getX(),ball.getY());
 			return collider;
 		}
-		else if (getElementAt(ball.getX()+ ball.getHeight(),ball.getY())!= null){
-			collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY());	
+		else if (getElementAt(ball.getX()+ ball.getWidth(),ball.getY())!= null){
+			collider = getElementAt(ball.getX()+ ball.getWidth(),ball.getY());	
 			return collider;
 		}
 		else if (getElementAt(ball.getX(),ball.getY()+ ball.getHeight())!= null){
 			collider = getElementAt(ball.getX(),ball.getY()+ ball.getHeight());
 			return collider;
 		}
-		else if (getElementAt(ball.getX()+ ball.getHeight(),ball.getY()+ ball.getHeight())!= null){
-			collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY()+ ball.getHeight());	
+		else if (getElementAt(ball.getX()+ ball.getWidth(),ball.getY()+ ball.getHeight())!= null){
+			collider = getElementAt(ball.getX()+ ball.getWidth(),ball.getY()+ ball.getHeight());	
 			return collider;
 		}
 		else{
