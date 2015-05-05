@@ -106,32 +106,16 @@ public class Breakout extends GraphicsProgram{
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
-		GObject collider = getCollidingObject(ball);
-		while (true){
-			if (ball.getX() == 0.0){
-				ball.move(-vx, vy);
-			}
-			if (ball.getY() == 0.0){
-				ball.move(vx, -vy);
-			}
-			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS){
-				ball.move(-vx, vy);
-			}
-			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
-				ball.move(vx, -vy);
-			}
-			if (collider == paddle){
-				ball.move(vx, -vy);
-			}
-			 
-			
-		}
-		
 	}
-	/*
-	 * check if there is a collision.
-	 */
 	
+	
+	
+	
+
+
+}
+
+
 
 
 
