@@ -88,11 +88,6 @@ public class Breakout extends GraphicsProgram{
 	private double vx,vy;
 	  
 	
-
-	
-	
-	
-
 	/* @return A ball that can be bounced.
 	 */
 	public void makeBall(){
@@ -126,6 +121,10 @@ public class Breakout extends GraphicsProgram{
 			}
 		}
 	}
+	
+	
+	
+	
 }
 		
 
