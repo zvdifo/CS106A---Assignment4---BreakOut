@@ -112,8 +112,24 @@ public class Breakout extends GraphicsProgram{
 		while(true){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
+			if (ball.getX() == 0.0){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == 0.0){
+				ball.move(vx, -vy);
+			}
+			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS){
+				ball.move(-vx, vy);
+			}
+			if (ball.getY() == APPLICATION_HEIGHT-BALL_RADIUS){
+				ball.move(vx, -vy);
+			}
 		}
-		GObject collider = getCollidingObject(ball);
+		
+		
+		
+		
+		GObject collider = getCollidingObject();
 		while (true){
 			if (ball.getX() == 0.0){
 				ball.move(-vx, vy);
@@ -138,7 +154,7 @@ public class Breakout extends GraphicsProgram{
 	/*
 	 * check if there is a collision.
 	 */
-	private GObject getCollidingObject(GOval ball){
+	private GObject getCollidingObject(){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
 			/**strange*/
 			GObject collider = getElementAt(ball.getX(),ball.getY());
