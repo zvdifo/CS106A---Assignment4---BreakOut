@@ -120,27 +120,30 @@ public class Breakout extends GraphicsProgram{
 			if (ball.getX() <= 0){
 				vx = -vx;
 			}
+			if (collider == paddle){
+				vy = -vy;
+			}
 		}
 	}
 	
-	
+	private GObject collider;
 	
 	private GObject getCollidingObject(){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
 			/**strange*/
-			GObject collider = getElementAt(ball.getX(),ball.getY());
+			collider = getElementAt(ball.getX(),ball.getY());
 			return collider;
 		}
 		else if (getElementAt(ball.getX()+ ball.getHeight(),ball.getY())!= null){
-			GObject collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY());	
+			collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY());	
 			return collider;
 		}
 		else if (getElementAt(ball.getX(),ball.getY()+ ball.getHeight())!= null){
-			GObject collider = getElementAt(ball.getX(),ball.getY()+ ball.getHeight());
+			collider = getElementAt(ball.getX(),ball.getY()+ ball.getHeight());
 			return collider;
 		}
 		else if (getElementAt(ball.getX()+ ball.getHeight(),ball.getY()+ ball.getHeight())!= null){
-			GObject collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY()+ ball.getHeight());	
+			collider = getElementAt(ball.getX()+ ball.getHeight(),ball.getY()+ ball.getHeight());	
 			return collider;
 		}
 		else{
