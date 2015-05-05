@@ -119,6 +119,7 @@ public class Breakout extends GraphicsProgram{
 				vx = -vx;
 			}
 		}
+	}
 			/*if (ball.getY() == 0.0){
 				ball.move(vx, -vy);
 			}
