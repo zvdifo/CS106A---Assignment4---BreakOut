@@ -61,11 +61,11 @@ public class Breakout extends GraphicsProgram{
 		/* You fill this in, along with any subsidiary methods */
 		//makePaddle();
 		/*GObject bricks = makeBricks();*/
-		GOval ball = makeBall();
+		//GOval ball = makeBall();
 		//add(paddle);
 		/*add(bricks);*/
-		add(ball);
-		moveBall(ball);
+		//add(ball);
+		//moveBall(ball);
 		double x = 170; 
 		double y = 330;
 		paddle = new GRect(x,y,60,10);
@@ -95,7 +95,7 @@ public class Breakout extends GraphicsProgram{
 
 	/* @return A ball that can be bounced.
 	 */
-	public GOval makeBall(){
+	/*public GOval makeBall(){
 		int x = (APPLICATION_WIDTH - BALL_RADIUS )/2; 
 		int y = (APPLICATION_HEIGHT - BALL_RADIUS)/2;
 		GOval ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
@@ -103,7 +103,7 @@ public class Breakout extends GraphicsProgram{
 	}
 	
 	/*set vx,vy to make ball move*/
-	private void moveBall(GOval ball){
+	/*private void moveBall(GOval ball){
 		double vy = 3.0;
 		RandomGenerator rgen = RandomGenerator.getInstance();
 		double vx = rgen.nextDouble(1.0, 3.0);
@@ -135,22 +135,22 @@ public class Breakout extends GraphicsProgram{
 	/*
 	 * check if there is a collision.
 	 */
-	private GObject getCollidingObject(GOval ball){
+	/*private GObject getCollidingObject(GOval ball){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
 			/**strange*/
-			GObject collider = getElementAt(ball.getX(),ball.getY());
+			/*GObject collider = getElementAt(ball.getX(),ball.getY());
 			return collider;
 		}
 		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
-			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
+			GObject collider = getElementAt(ball.getX()+ 2*,ball.getY());	
 			return collider;
 		}
 		else if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
-			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS);
+			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*);
 			return collider;
 		}
 		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
-			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS);	
+			GObject collider = getElementAt(ball.getX()+ 2,ball.getY()+ 2*);	
 			return collider;
 		}
 		else{
