@@ -59,26 +59,30 @@ public class Breakout extends GraphicsProgram{
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
-		makePaddle();
+		//makePaddle();
 		/*GObject bricks = makeBricks();*/
 		GOval ball = makeBall();
-		add(paddle);
+		//add(paddle);
 		/*add(bricks);*/
 		add(ball);
 		moveBall(ball);
+		double x = 170; 
+		double y = 330;
+		paddle = new GRect(x,y,60,10);
+		add(paddle);
 		addMouseListeners();
 	}		
 	
 	
 	/* make a paddle which can be controlled by the mouse*/
-	public void makePaddle(){
+	/*public void makePaddle(){
 		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
 		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
 		paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
-	}	
+	}*/	
 		
 	public void mouseMoved(MouseEvent e){
-		paddle.setLocation(e.getX() - PADDLE_WIDTH/2, getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT); 	    
+		paddle.setLocation(e.getX() - 30, getHeight() - 40); 	    
 	}
 	
 	private GRect paddle;
