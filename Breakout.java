@@ -162,8 +162,7 @@ public class Breakout extends GraphicsProgram{
 				add(brick);
 			}
 		}
-	
-	
+	}
 }
 		
 
