@@ -119,11 +119,10 @@ public class Breakout extends GraphicsProgram{
 				vy = -vy;
 			}
 			if (ball.getX() + ball.getWidth() >= getWidth()){
-				vy = -vy;
+				vx = -vx;
 			}
 			if (ball.getX() == 0){
-				vy = -vy;
-			}
+				vx = -vx;
 			
 			
 			
