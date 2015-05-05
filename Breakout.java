@@ -112,16 +112,14 @@ public class Breakout extends GraphicsProgram{
 		while(true){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
-			if (ballBelowFloor(ball)) {
-				vy *= -ELASTICITY;
-			}
 			
 			
 			
-			/*if (ball.getX() == 0.0){
+			if (ball.getX() == 0.0){
 				vx = -vx;
 			}
-			if (ball.getY() == 0.0){
+		}
+			/*if (ball.getY() == 0.0){
 				ball.move(vx, -vy);
 			}
 			if (ball.getX() == APPLICATION_WIDTH-BALL_RADIUS*2){
