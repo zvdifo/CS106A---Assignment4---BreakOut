@@ -67,7 +67,6 @@ public class Breakout extends GraphicsProgram{
 		add(paddle);
 		//add(bricks);
 		add(ball);
-		
 		addMouseListeners();
 		moveBall();
 	}		
