@@ -59,27 +59,23 @@ public class Breakout extends GraphicsProgram{
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
-		//makePaddle();
+		makePaddle();
 		/*GObject bricks = makeBricks();*/
 		//GOval ball = makeBall();
-		//add(paddle);
+		add(paddle);
 		/*add(bricks);*/
 		//add(ball);
 		//moveBall(ball);
-		double x = 170; 
-		double y = 330;
-		paddle = new GRect(x,y,60,10);
-		add(paddle);
 		addMouseListeners();
 	}		
 	
 	
 	/* make a paddle which can be controlled by the mouse*/
-	/*public void makePaddle(){
+	public void makePaddle(){
 		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
 		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
 		paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
-	}*/	
+	}
 		
 	public void mouseMoved(MouseEvent e){
 		paddle.setLocation(e.getX() - 30, getHeight() - 40); 	    
@@ -135,6 +131,28 @@ public class Breakout extends GraphicsProgram{
 	/*
 	 * check if there is a collision.
 	 */
+	private GObject getCollidingObject(GOval ball){
+		if (getElementAt(ball.getX(),ball.getY())!= null){
+			/**strange*/
+			GObject collider = getElementAt(ball.getX(),ball.getY());
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
+			return collider;
+		}
+		else if (getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX(),ball.getY()+ 2*BALL_RADIUS);
+			return collider;
+		}
+		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS)!= null){
+			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY()+ 2*BALL_RADIUS);	
+			return collider;
+		}
+		else{
+			return null;
+		}
+	}
 	
 	
 	
