@@ -69,7 +69,7 @@ public class Breakout extends GraphicsProgram{
 		add(ball);
 		addMouseListeners();
 		moveBall();
-		makeBricks();
+		
 		
 		int x = 0;  
 		int y = BRICK_Y_OFFSET;
@@ -80,6 +80,8 @@ public class Breakout extends GraphicsProgram{
 				brick.setFilled(true);
 				brick.setFillColor(Color.GREEN);
 				add(brick);
+			}
+		}
 	}		
 	
 	
