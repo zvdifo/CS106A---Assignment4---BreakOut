@@ -86,6 +86,7 @@ public class Breakout extends GraphicsProgram{
 	private GRect paddle;
 	private GOval ball;
 	private double vx,vy;
+	
 	  
 	
 	/* @return A ball that can be bounced.
@@ -130,7 +131,7 @@ public class Breakout extends GraphicsProgram{
 			GObject collider = getElementAt(ball.getX(),ball.getY());
 			return collider;
 		}
-		else if (getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY())!= null){
+		else if (getElementAt(ball.getX()+ ball.getY()+ 2*BALL_RADIUS)!= null){
 			GObject collider = getElementAt(ball.getX()+ 2*BALL_RADIUS,ball.getY());	
 			return collider;
 		}
