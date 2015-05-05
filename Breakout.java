@@ -149,6 +149,15 @@ public class Breakout extends GraphicsProgram{
 			return null;
 		}
 	}
+	
+	private void makeBricks(){
+		int x = (WIDTH - BRICK_WIDTH)/2;  
+		int y = BRICK_Y_OFFSET;
+		GRect brick = new GRect(x,y,)
+		
+	}
+	
+	
 }
 		
 
