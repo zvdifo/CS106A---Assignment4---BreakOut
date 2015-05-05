@@ -123,9 +123,7 @@ public class Breakout extends GraphicsProgram{
 			}
 			if (ball.getX() == 0){
 				vx = -vx;
-			
-			
-			
+			}
 		}
 	}
 }
