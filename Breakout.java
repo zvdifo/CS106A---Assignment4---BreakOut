@@ -71,11 +71,10 @@ public class Breakout extends GraphicsProgram{
 	
 	
 	/* make a paddle which can be controlled by the mouse*/
-	public GRect makePaddle(){
+	public void makePaddle(){
 		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
 		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
 		paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
-		add(paddle);
 	}	
 		
 	public void mouseMoved(MouseEvent e){
