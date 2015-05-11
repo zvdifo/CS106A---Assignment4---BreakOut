@@ -114,6 +114,7 @@ public class Breakout extends GraphicsProgram{
 	private GOval ball;
 	private double vx,vy;
 	private GObject collider;
+	private int BricksNum = NBRICKS_PER_ROW*NBRICK_ROWS;
 	  
 	
 	/* @return A ball that can be bounced.
@@ -133,7 +134,7 @@ public class Breakout extends GraphicsProgram{
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
-		int BricksNum = NBRICKS_PER_ROW*NBRICK_ROWS;
+		
 		while(true && BricksNum > 0){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
