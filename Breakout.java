@@ -33,7 +33,7 @@ public class Breakout extends GraphicsProgram{
 	private static final int PADDLE_Y_OFFSET = 30;
 
 	/** Number of bricks per row */
-	private static final int NBRICKS_PER_ROW = 10;
+	private static final int NBRICKS_PER_ROW = 3;
 
 	/** Number of rows of bricks */
 	private static final int NBRICK_ROWS = 10;
@@ -62,7 +62,7 @@ public class Breakout extends GraphicsProgram{
 
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
-		for (int i = 10; i > 0 ; i--){
+		for (int i = 1; i > 0 ; i--){
 			double firstRow = (getWidth() - (BRICK_WIDTH+BRICK_SEP))/2;
 			for (int j = 0; j < NBRICKS_PER_ROW ; j++){
 				double x = firstRow + j* BRICK_WIDTH + j*BRICK_SEP;  
@@ -95,7 +95,6 @@ public class Breakout extends GraphicsProgram{
 			addMouseListeners();
 			moveBall();	
 			remove(ball);
-	
 		}	
 	}		
 	
