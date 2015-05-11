@@ -94,6 +94,9 @@ public class Breakout extends GraphicsProgram{
 			makeBall();
 			addMouseListeners();
 			moveBall();
+			if (BricksNum <= 0){
+				break;
+			}
 		}
 		
 	}		
