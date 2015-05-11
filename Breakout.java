@@ -94,6 +94,7 @@ public class Breakout extends GraphicsProgram{
 			addMouseListeners();
 			moveBall();	
 			remove(ball);
+			waitForClick()
 		}	
 	}		
 	
