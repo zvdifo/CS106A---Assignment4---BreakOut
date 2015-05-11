@@ -60,24 +60,15 @@ public class Breakout extends GraphicsProgram{
 	/* The amount of time to pause between frames (48fps). */
 	private static final double PAUSE_TIME = 1000.0 / 48; 
 
+
+	/*main*/
 	public void run() {
-		// build bricks.
-		setBricks();
-		//add paddle.
-		makePaddle();
-		add(paddle);
-		//
-		for (int i=NTURNS ; i>0 ; i--){
-			waitForClick();
-			makeBall();
-			addMouseListeners();
-			moveBall();
-			if (BricksNum <= 0){
-				break;
-			}
-		}
-	}		
+		setBricks(); //build bricks.
+		makePaddle(); //add paddle.
+		playGame(); // play game. 	
+	}
 	
+		
 	private void setBricks(){
 		for (int i = NBRICK_ROWS;i > 0 ; i--){
 			double firstRow = (getWidth() - (BRICK_WIDTH+BRICK_SEP))/2;
@@ -106,28 +97,34 @@ public class Breakout extends GraphicsProgram{
 		}
 	}
 	
+	
 	/* make a paddle which can be controlled by the mouse*/
 	public void makePaddle(){
 		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
 		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
 		paddle = new GRect(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
+		add(paddle);
 	}	
 		
 	public void mouseMoved(MouseEvent e){
 		paddle.setLocation(e.getX() - PADDLE_WIDTH/2, getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT); 	    
 	}
 	
+	private void playGame(){
+		for (int i=NTURNS ; i>0 ; i--){
+			waitForClick();
+			makeBall();
+			addMouseListeners();
+			moveBall();
+			if (BricksNum <= 0){
+				break;
+			}
+		}
+	}
 	
-	//add some instance variable.
-	private GRect paddle;
-	private GOval ball;
-	private double vx,vy;
-	private GObject collider;
-	private int BricksNum = NBRICKS_PER_ROW*NBRICK_ROWS;
-	  
-	
-	/* @return A ball that can be bounced.
-	 */
+
+
+	/* @return A ball that can be bounced. */
 	public void makeBall(){
 		int x = APPLICATION_WIDTH / 2 - BALL_RADIUS ; 
 		int y = APPLICATION_HEIGHT / 2 - BALL_RADIUS;
@@ -199,12 +196,15 @@ public class Breakout extends GraphicsProgram{
 			return null;
 		}
 	}
+
+	//add some instance variable.
+	private GRect paddle;
+	private GOval ball;
+	private double vx,vy;
+	private GObject collider;
+	private int BricksNum = NBRICKS_PER_ROW*NBRICK_ROWS;
+
 }
-		
-
-
-
-
 
 
 
