@@ -89,9 +89,8 @@ public class Breakout extends GraphicsProgram{
 		}
 		makePaddle();
 		add(paddle);
-		for (int i=3;i>0;i--){
+		for (int i=NTURNS ; i>0 ; i--){
 			makeBall();
-			add(ball);
 			addMouseListeners();
 			moveBall();	
 			remove(ball);
@@ -122,6 +121,7 @@ public class Breakout extends GraphicsProgram{
 		int x = APPLICATION_WIDTH / 2 - BALL_RADIUS ; 
 		int y = APPLICATION_HEIGHT / 2 - BALL_RADIUS;
 		ball = new GOval(x,y,BALL_RADIUS,BALL_RADIUS);
+		add(ball);
 	}
 	
 	/*set vx,vy to make ball move*/
@@ -155,7 +155,11 @@ public class Breakout extends GraphicsProgram{
 				remove(collider);
 				BricksNum = BricksNum - 1;
 				collider = null;
-			}	
+			}
+			if (ball.getY() + ball.getHeight() >= getHeight()){
+				remove(ball);
+				break;	
+			}
 		}
 	}
 		
