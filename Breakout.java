@@ -129,6 +129,7 @@ public class Breakout extends GraphicsProgram{
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
+		getCollidingObject();
 		while(true){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
@@ -147,6 +148,7 @@ public class Breakout extends GraphicsProgram{
 			if (collider != null && collider == paddle){
 				vy = -vy;
 			}
+			
 		}
 	}
 	
