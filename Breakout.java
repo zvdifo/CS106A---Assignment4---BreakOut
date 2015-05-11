@@ -132,11 +132,11 @@ public class Breakout extends GraphicsProgram{
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
-		while(true && BricksNum != 0){
+		int BricksNum = NBRICKS_PER_ROW*NBRICK_ROWS;
+		while(true && BricksNum > 0){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
 			getCollidingObject();
-			int BricksNum = NBRICKS_PER_ROW*NBRICK_ROWS;
 			if (ball.getY() <= 0){
 				vy = -vy;
 			}
