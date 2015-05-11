@@ -88,11 +88,14 @@ public class Breakout extends GraphicsProgram{
 			}
 		}
 		makePaddle();
+		
+		
 		makeBall();
 		add(paddle);
 		add(ball);
 		addMouseListeners();
 		moveBall();	
+		
 	}		
 	
 	
@@ -129,10 +132,11 @@ public class Breakout extends GraphicsProgram{
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
-		while(true){
+		while(true && BricksNum != 0){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
 			getCollidingObject();
+			int BricksNum = NBRICKS_PER_ROW*NBRICK_ROWS;
 			if (ball.getY() <= 0){
 				vy = -vy;
 			}
@@ -149,12 +153,12 @@ public class Breakout extends GraphicsProgram{
 			if (collider != null && collider != paddle){
 				vy = -vy;
 				remove(collider);
+				BricksNum = BricksNum - 1;
 				collider = null;
 			}
 		}
 	}
-	
-	
+		
 	
 	private GObject getCollidingObject(){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
