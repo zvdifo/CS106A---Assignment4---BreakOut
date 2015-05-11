@@ -155,8 +155,9 @@ public class Breakout extends GraphicsProgram{
 				remove(collider);
 				BricksNum = BricksNum - 1;
 				collider = null;
-			}
+			}	
 		}
+		ball = null;
 	}
 		
 	
