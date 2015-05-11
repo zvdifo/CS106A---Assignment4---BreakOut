@@ -167,8 +167,7 @@ public class Breakout extends GraphicsProgram{
 				remove(ball);
 				break;	
 			}
-		}
-		
+		}	
 	}
 		
 	
