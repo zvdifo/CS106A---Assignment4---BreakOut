@@ -89,13 +89,13 @@ public class Breakout extends GraphicsProgram{
 		}
 		makePaddle();
 		
-		
-		makeBall();
-		add(paddle);
-		add(ball);
-		addMouseListeners();
-		moveBall();	
-		
+		for (int i=3;i>0;i--){
+			makeBall();
+			add(paddle);
+			add(ball);
+			addMouseListeners();
+			moveBall();	
+		}	
 	}		
 	
 	
