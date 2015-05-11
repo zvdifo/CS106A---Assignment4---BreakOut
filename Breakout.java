@@ -33,10 +33,10 @@ public class Breakout extends GraphicsProgram{
 	private static final int PADDLE_Y_OFFSET = 30;
 
 	/** Number of bricks per row */
-	private static final int NBRICKS_PER_ROW = 1;
+	private static final int NBRICKS_PER_ROW = 5;
 
 	/** Number of rows of bricks */
-	private static final int NBRICK_ROWS = 1;
+	private static final int NBRICK_ROWS = 5;
 
 	/** Separation between bricks */
 	private static final int BRICK_SEP = 4;
@@ -93,9 +93,9 @@ public class Breakout extends GraphicsProgram{
 			waitForClick();
 			makeBall();
 			addMouseListeners();
-			moveBall();	
-			remove(ball);	
-		}	
+			moveBall();
+		}
+		
 	}		
 	
 	
@@ -162,6 +162,7 @@ public class Breakout extends GraphicsProgram{
 				break;	
 			}
 		}
+		
 	}
 		
 	
