@@ -94,6 +94,7 @@ public class Breakout extends GraphicsProgram{
 			add(ball);
 			addMouseListeners();
 			moveBall();	
+			remove(ball);
 	
 		}	
 	}		
@@ -157,7 +158,6 @@ public class Breakout extends GraphicsProgram{
 				collider = null;
 			}	
 		}
-		remove(ball);
 	}
 		
 	
