@@ -134,10 +134,14 @@ public class Breakout extends GraphicsProgram{
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
-		while(true && BricksNum > 0){
+		while(true){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
 			getCollidingObject();
+			if (BricksNum <= 0){
+				remove(ball);
+				break;
+			}
 			if (ball.getY() <= 0){
 				vy = -vy;
 			}
