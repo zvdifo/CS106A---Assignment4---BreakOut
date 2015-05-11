@@ -61,7 +61,24 @@ public class Breakout extends GraphicsProgram{
 	private static final double PAUSE_TIME = 1000.0 / 48; 
 
 	public void run() {
-		/* You fill this in, along with any subsidiary methods */
+		// build bricks.
+		setBricks();
+		//add paddle.
+		makePaddle();
+		add(paddle);
+		//
+		for (int i=NTURNS ; i>0 ; i--){
+			waitForClick();
+			makeBall();
+			addMouseListeners();
+			moveBall();
+			if (BricksNum <= 0){
+				break;
+			}
+		}
+	}		
+	
+	private void setBricks(){
 		for (int i = NBRICK_ROWS;i > 0 ; i--){
 			double firstRow = (getWidth() - (BRICK_WIDTH+BRICK_SEP))/2;
 			for (int j = 0; j < NBRICKS_PER_ROW ; j++){
@@ -87,19 +104,7 @@ public class Breakout extends GraphicsProgram{
 				add(brick);
 			}
 		}
-		makePaddle();
-		add(paddle);
-		for (int i=NTURNS ; i>0 ; i--){
-			waitForClick();
-			makeBall();
-			addMouseListeners();
-			moveBall();
-			if (BricksNum <= 0){
-				break;
-			}
-		}
-	}		
-	
+	}
 	
 	/* make a paddle which can be controlled by the mouse*/
 	public void makePaddle(){
@@ -112,6 +117,8 @@ public class Breakout extends GraphicsProgram{
 		paddle.setLocation(e.getX() - PADDLE_WIDTH/2, getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT); 	    
 	}
 	
+	
+	//add some instance variable.
 	private GRect paddle;
 	private GOval ball;
 	private double vx,vy;
