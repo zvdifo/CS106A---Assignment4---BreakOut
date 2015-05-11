@@ -133,9 +133,6 @@ public class Breakout extends GraphicsProgram{
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
 			getCollidingObject();
-			if (ball.getY() + ball.getHeight() >= getHeight()){
-				vy = -vy;
-			}
 			if (ball.getY() <= 0){
 				vy = -vy;
 			}
