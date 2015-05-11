@@ -68,7 +68,7 @@ public class Breakout extends GraphicsProgram{
 		playGame(); // play game. 	
 	}
 	
-		
+	/*set bricks*/	
 	private void setBricks(){
 		for (int i = NBRICK_ROWS;i > 0 ; i--){
 			double firstRow = 0;
@@ -98,7 +98,7 @@ public class Breakout extends GraphicsProgram{
 	}
 	
 	
-	/* make a paddle which can be controlled by the mouse*/
+	/* make a paddle which can move as mouse moves*/
 	public void makePaddle(){
 		double x = (APPLICATION_WIDTH - PADDLE_WIDTH)/2; 
 		double y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET;
@@ -124,7 +124,7 @@ public class Breakout extends GraphicsProgram{
 	
 
 
-	/* @return A ball that can be bounced. */
+	/* make a ball located in the middle of the canvas*/
 	public void makeBall(){
 		int x = APPLICATION_WIDTH / 2 - BALL_RADIUS ; 
 		int y = APPLICATION_HEIGHT / 2 - BALL_RADIUS;
@@ -132,7 +132,7 @@ public class Breakout extends GraphicsProgram{
 		add(ball);
 	}
 	
-	/*set vx,vy to make ball move*/
+	/*set vx,vy to make ball move,considering several collision events*/
 	private void moveBall(){
 		vy = 3.0;
 		RandomGenerator rgen = RandomGenerator.getInstance();
@@ -144,10 +144,14 @@ public class Breakout extends GraphicsProgram{
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
 			getCollidingObject();
+			
+			/*break when bricks are cleared*/
 			if (BricksNum <= 0){
 				remove(ball);
 				break;
 			}
+			
+			/*bounce the ball when face the wall*/
 			if (ball.getY() <= 0){
 				vy = -vy;
 			}
@@ -157,16 +161,19 @@ public class Breakout extends GraphicsProgram{
 			if (ball.getX() <= 0){
 				vx = -vx;
 			}
+			/*bounce the ball when collider is the paddle*/
 			if (collider == paddle){
 				vy = -vy;
 				collider = null;
 			}	
+			/*bounce the ball when collider is bricks*/
 			if (collider != null && collider != paddle){
 				vy = -vy;
 				remove(collider);
 				BricksNum = BricksNum - 1;
 				collider = null;
 			}
+			/*break when the ball fall below the bottom*/
 			if (ball.getY() + ball.getHeight() >= getHeight()){
 				remove(ball);
 				break;	
@@ -174,7 +181,7 @@ public class Breakout extends GraphicsProgram{
 		}	
 	}
 		
-	
+	/*check if ball meets an object*/
 	private GObject getCollidingObject(){
 		if (getElementAt(ball.getX(),ball.getY())!= null){
 			collider = getElementAt(ball.getX(),ball.getY());
