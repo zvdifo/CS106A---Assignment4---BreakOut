@@ -134,7 +134,6 @@ public class Breakout extends GraphicsProgram{
 		if (rgen.nextBoolean(0.5)){
 			vx = -vx;
 		}	
-		
 		while(true && BricksNum > 0){
 			ball.move(vx, vy);
 			pause(PAUSE_TIME);
