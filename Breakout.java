@@ -146,7 +146,7 @@ public class Breakout extends GraphicsProgram{
 				vx = -vx;
 			}
 			if (collider == paddle){
-				vy = -vy;
+				vy = -2*vy;
 			}
 			
 			
